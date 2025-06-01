@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Eres Bella</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #1a001a;
+      font-family: 'Arial', sans-serif;
+      overflow: hidden; /* Muy importante para evitar scroll no deseado */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .starry-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .star {
+      position: absolute;
+      width: 1px; /* Estrellas más pequeñas para celular */
+      height: 1px;
+      background-color: white;
+      border-radius: 50%;
+      animation: twinkle 2s infinite ease-in-out;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.4; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+
+    .neon-container {
+      text-align: center;
+      padding: 15px 25px; /* Menor padding para celular */
+      border: 2px solid #ff00ff; /* Borde más fino */
+      border-radius: 10px; /* Menor radio */
+      box-shadow:
+        0 0 8px #ff00ff,
+        0 0 15px #ff00ff,
+        0 0 30px #ff00ff,
+        inset 0 0 6px #ff00ff;
+    }
+
+    .neon-text {
+      color: #fff;
+      font-size: 2.2rem; /* Menor tamaño para celular */
+      font-weight: bold;
+      text-shadow:
+        0 0 4px #fff,
+        0 0 8px #fff,
+        0 0 15px #ff00ff,
+        0 0 25px #ff00ff;
+      animation: pulse 1.8s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); } /* Menor pulsación */
+    }
+
+    .falling-group {
+      position: absolute;
+      font-size: 1.2rem; /* Tamaño general para la frase y emojis */
+      font-weight: bold;
+      color: #f0f0f0;
+      text-shadow: 0 0 2px #fff, 0 0 4px #ff80ff, 0 0 8px #ff00ff;
+      white-space: nowrap;
+      top: -10%; /* Comienza por encima de la vista */
+      opacity: 0; /* Invisible al inicio */
+      animation: fall 8s linear infinite; /* Velocidad de caída */
+    }
+
+    .falling-group .emoji {
+        font-size: 1.2rem; /* Igual tamaño que el texto para no desentonar */
+        margin: 0 3px; /* Menor espacio entre elementos */
+        text-shadow: 0 0 1px #fff, 0 0 3px #ff80ff; /* Sombra más sutil */
+    }
+
+    /* Posicionamiento y retraso para cada grupo */
+    /* Usando 'vw' (viewport width) para adaptarse a diferentes anchos de pantalla */
+    /* Y ajustando 'left' para evitar superposiciones en móviles */
+    .group1 { left: 5vw;  animation-delay: 0s;  } /* Eres perfecta 💜💗👑 */
+    .group2 { left: 28vw; animation-delay: 1.5s;} /* Maravillosa 😻🥹 */
+    .group3 { left: 55vw; animation-delay: 3s;  } /* Hermosa 💜🥺 */
+    .group4 { left: 78vw; animation-delay: 4.5s;} /* Linda 💗👑 */
+    .group5 { left: 10vw; animation-delay: 6s;  } /* MAI te amo 🥹😻 */
+    .group6 { left: 40vw; animation-delay: 7.5s;} /* Eres perfecta 💜 */
+    .group7 { left: 70vw; animation-delay: 9s;  } /* Maravillosa 👑 */
+    .group8 { left: 3vw;  animation-delay: 10.5s;} /* Hermosa 🥺 */
+    .group9 { left: 60vw; animation-delay: 12s; } /* Linda 💗 */
+    .group10 {left: 35vw; animation-delay: 13.5s;} /* Nueva: Otro MAI te amo */
+    .group11 {left: 85vw; animation-delay: 15s; } /* Nueva: Otra perfecta */
+
+
+    @keyframes fall {
+      0% {
+        top: -10%; /* Empieza por encima de la pantalla */
+        transform: translateX(0); /* ¡Quitamos o reducimos el desplazamiento lateral! */
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        top: 110%; /* Cae completamente fuera de la pantalla */
+        transform: translateX(0); /* Aseguramos que no haya desviación horizontal al final */
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="starry-background" id="stars"></div>
+
+  <div class="neon-container">
+    <div class="neon-text">ERES BELLA</div>
+  </div>
+
+  <div class="falling-group group1">Eres perfecta <span class="emoji">💜</span><span class="emoji">💗</span><span class="emoji">👑</span></div>
+  <div class="falling-group group2">Maravillosa <span class="emoji">😻</span><span class="emoji">🥹</span></div>
+  <div class="falling-group group3">Hermosa <span class="emoji">💜</span><span class="emoji">🥺</span></div>
+  <div class="falling-group group4">Linda <span class="emoji">💗</span><span class="emoji">👑</span></div>
+  <div class="falling-group group5">MAI te amo <span class="emoji">🥹</span><span class="emoji">😻</span></div>
+  <div class="falling-group group6">Eres perfecta <span class="emoji">💜</span></div>
+  <div class="falling-group group7">Maravillosa <span class="emoji">👑</span></div>
+  <div class="falling-group group8">Hermosa <span class="emoji">🥺</span></div>
+  <div class="falling-group group9">Linda <span class="emoji">💗</span></div>
+  <div class="falling-group group10">MAI te amo <span class="emoji">💜</span><span class="emoji">🥹</span></div>
+  <div class="falling-group group11">Eres perfecta <span class="emoji">😻</span><span class="emoji">👑</span></div>
+
+
+  <script>
+    const starsContainer = document.getElementById('stars');
+    // Aumentar el número de estrellas a 100
+    const numberOfStars = 100; 
+    for (let i = 0; i < numberOfStars; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.animationDelay = (Math.random() * 2) + 's';
+      starsContainer.appendChild(star);
+    }
+  </script>
+
+</body>
+</html>
